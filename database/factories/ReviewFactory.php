@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class ReviewFactory extends Factory
     {
         return [
             'content' => $this->faker->sentence,
+            'book_id' => rand(1, Book::count()),
         ];
     }
 }
