@@ -1,26 +1,24 @@
 <script setup>
     import Form from '../components/Form.vue';
-    import { createBook } from '../store';
+    import { createAuthor } from '../store';
     import { useRouter } from 'vue-router';
     import {ref} from 'vue';
 
     const router = useRouter();
 
-    const book = ref({
-        title: '',
-        summary: '',
-        author_id: null
+    const author = ref({
+        name: '',
     });
 
     const handleSubmit = async (data) => {
-        await createBook(data);
-        router.push({name: 'books.overview'});
+        await createAuthor(data);
+        router.push({name: 'authors.overview'});
     };
 </script>
 
 <template>
     <div>
         <h2>Nieuw boek toevoegen</h2>
-        <Form :book="book" @submit="handleSubmit"/>
+        <Form :author="author" @submit="handleSubmit"/>
     </div>
 </template>
