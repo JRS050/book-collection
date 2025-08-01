@@ -1,7 +1,5 @@
 <script setup>
-    import { fetchBooks, getAllBooks, deleteBook } from '../store';
-
-    fetchBooks();
+    import { books, deleteBook } from '../store';
 </script>
 
 <template>
@@ -10,7 +8,7 @@
             <th>Title</th>
             <th>Summary</th>
         </tr>
-        <tr v-for="book in getAllBooks" :key="book.id">
+        <tr v-for="book in books" :key="book.id">
             <td>{{ book.title }}</td>
             <td>{{ book.summary }}</td>
             <td>
