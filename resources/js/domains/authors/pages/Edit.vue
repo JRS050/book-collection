@@ -9,14 +9,17 @@
     import { ref, onMounted, computed } from 'vue';
     import { useRoute, useRouter } from 'vue-router';
     import Form from '../components/Form.vue';
-    import { fetchAuthors, getAuthorById, updateAuthor } from '../store';
+    import { authorStore } from '../store';
 
     const route = useRoute();
     const router = useRouter();
 
-    fetchAuthors();
+     const author = authorStore.getters.getById(route.params.id);
 
-    const author = getAuthorById(route.params.id);
+    const updateAuthor = async (id,data) => {
+        await authorStore.actions.update(id, data);
+        // code... what code should I put here?
+    };
 
     const handleSubmit = async (data) => {
         await updateAuthor(route.params.id, data);

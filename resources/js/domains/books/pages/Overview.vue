@@ -1,5 +1,12 @@
 <script setup>
-    import { books, deleteBook } from '../store';
+    import { bookStore } from '../store';
+
+    bookStore.actions.getAll();
+    const books = bookStore.getters.all;
+    const deleteBook = async (id) => {
+        await bookStore.actions.delete(id);
+        // works
+    };
 </script>
 
 <template>

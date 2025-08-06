@@ -1,6 +1,6 @@
 <script setup>
     import Form from '../components/Form.vue';
-    import { createAuthor } from '../store';
+    import { authorStore } from '../store';
     import { useRouter } from 'vue-router';
     import {ref} from 'vue';
 
@@ -10,15 +10,19 @@
         name: '',
     });
 
+    const addAuthor = async (data) => {
+        await authorStore.actions.create(data);
+    };
+
     const handleSubmit = async (data) => {
-        await createAuthor(data);
+        await addAuthor(data);
         router.push({name: 'authors.overview'});
     };
 </script>
 
 <template>
     <div>
-        <h2>Nieuw boek toevoegen</h2>
+        <h2>Nieuw auteur toevoegen</h2>
         <Form :author="author" @submit="handleSubmit"/>
     </div>
 </template>

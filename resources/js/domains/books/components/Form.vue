@@ -1,17 +1,26 @@
 <template>
+
+    <errorMessage />
+
     <form @submit.prevent="handleSubmit">
         <label>Titel:</label>
         <input v-model="form.title" type="text" required />
 
+        <FormError name="title" />
+
         <label>Samenvatting:</label>
         <textarea v-model="form.summary" required></textarea>
 
+        <FormError name="summary" />
+
         <label>Auteur:</label>
         <select v-model="form.author_id" required>
-            <option v-for="author in getAllAuthors" :key="author.id" :value="author.id">
+            <option v-for="author in authors" :key="author.id" :value="author.id">
                 {{ author.name }}
             </option>
         </select>
+
+        <FormError name="author" />
 
         <button type="submit">Opslaan</button>
     </form>
@@ -19,10 +28,12 @@
 
 <script setup>
     import { ref } from 'vue';
-    import { fetchAuthors, getAllAuthors } from '../../authors/store';
+    import { authorStore } from '../../authors/store';
+    import  errorMessage from '../../../services/error/errorMessage.vue';
+    import FormError from '../../../services/error/FormError.vue';
 
-    // Fetch authors when component is mounted
-    fetchAuthors();
+    authorStore.actions.getAll();
+    const authors = authorStore.getters.all;
 
     const props = defineProps({ book: Object });
 

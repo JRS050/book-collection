@@ -9,12 +9,17 @@
     import { ref, onMounted, computed } from 'vue';
     import { useRoute, useRouter } from 'vue-router';
     import Form from '../components/Form.vue';
-    import { book, updateBook } from '../store';
+    import { bookStore } from '../store';
 
     const route = useRoute();
     const router = useRouter();
 
-    const bookById = book(route.params.id);
+    const book = bookStore.getters.getById(route.params.id);
+
+    const updateBook = async (id,data) => {
+        await bookStore.actions.update(id, data);
+        // code... what code should I put here?
+    };
 
     const handleSubmit = async (data) => {
         await updateBook(route.params.id, data);

@@ -1,15 +1,25 @@
 <script setup>
-    import { fetchAuthors, getAllAuthors, deleteAuthor } from '../store';
+    import { authorStore } from '../store';
+    import { getErrorBag } from '../../../services/error';
+    import errorMessage from '../../../services/error/errorMessage.vue';
 
-    fetchAuthors();
+    authorStore.actions.getAll();
+    const authors = authorStore.getters.all;
+    const deleteAuthor = async (id) => {
+        await authorStore.actions.delete(id);
+        // works
+    };
 </script>
 
 <template>
+
+    <errorMessage />
+
     <table>
         <tr>
             <th>Name</th>
         </tr>
-        <tr v-for="author in getAllAuthors" :key="author.id">
+        <tr v-for="author in authors" :key="author.id">
             <td>{{ author.name }}</td>
             <td>
                 <RouterLink :to="{ name: 'authors.edit', params: { id: author.id } }">Bewerk</RouterLink>
