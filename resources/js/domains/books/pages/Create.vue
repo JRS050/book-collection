@@ -8,6 +8,7 @@
     
     const addBook = async (data) => {
         await bookStore.actions.create(data);
+        router.push({name: 'books.overview'});
     };
 
     const router = useRouter();
@@ -19,8 +20,7 @@
     });
 
     const handleSubmit = async (data) => {
-        addBook(data);
-        router.push({name: 'books.overview'});
+        addBook(data); 
     };
 </script>
 

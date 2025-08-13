@@ -1,3 +1,3 @@
 import { storeModuleFactory } from "../../services/store";
 
-export const bookStore = storeModuleFactory('books');
+export const reviewStore = storeModuleFactory('reviews');

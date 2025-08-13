@@ -1,6 +1,5 @@
 <script setup>
     import { authorStore } from '../store';
-    import { getErrorBag } from '../../../services/error';
     import errorMessage from '../../../services/error/errorMessage.vue';
 
     authorStore.actions.getAll();
