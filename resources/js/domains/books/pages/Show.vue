@@ -1,10 +1,13 @@
 <script setup lang="ts">
     import { bookStore } from '../store';
-    import { useRoute, useRouter } from 'vue-router';
+    import { useRoute } from 'vue-router';
+    import BookReviews from '../../reviews/components/BookReviews.vue';
+    import { authorStore } from '../../authors/store';
 
     const route = useRoute();
-    const router = useRouter();
     const book = bookStore.getters.getById(route.params.id);
+    console.log(book.value);
+    // const author = authorStore.getters.getById(book.value.author_id);
 </script>
 
 <template>
@@ -20,15 +23,6 @@
         </table>
     </div>
     <div>
-        <table>
-            <tr>
-                <th>User</th>
-                <th>Review</th>
-            </tr>
-            <tr v-for="review in reviews" :key="index">
-                <td>User Placeholder</td>
-                <td>{{ review.content }}</td>
-            </tr>
-        </table>
+        <BookReviews :book_id="book.id"/>
     </div>
 </template>

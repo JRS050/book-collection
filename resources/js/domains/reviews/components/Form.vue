@@ -6,7 +6,6 @@
 
 
     reviewStore.actions.getAll();
-    const reviews = reviewStore.getters.all;
 
     const props = defineProps({ review: Object });
 

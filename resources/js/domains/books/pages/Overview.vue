@@ -19,6 +19,7 @@
             <td>{{ book.title }}</td>
             <td>{{ book.summary }}</td>
             <td>
+                <RouterLink :to="{name: 'books.show', params: {id: book.id}}">More Info</RouterLink>
                 <RouterLink :to="{ name: 'books.edit', params: { id: book.id } }">Bewerk</RouterLink>
                 <button @click="deleteBook(book.id)">Verwijder</button>
             </td>
