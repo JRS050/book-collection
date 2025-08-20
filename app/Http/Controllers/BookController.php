@@ -29,8 +29,4 @@ class BookController extends Controller
         $book->delete();
         return response()->json(['message' => 'Boek succesvol verwijderd']);
     }
-
-    public function show(Book $book){
-
-    }
 }

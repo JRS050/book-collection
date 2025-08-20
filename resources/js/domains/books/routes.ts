@@ -9,6 +9,6 @@ export const bookRoutes =  [
     { path: '/books/create', component: Create, name: 'books.create' },
     { path: '/books/:id/edit', component: Edit, name: 'books.edit' },
     { path: '/books/:id/reviews', component: Show, children: [
-        { path: 'bookReviews', component: BookReviews}
+        { path: 'bookReviews', component: BookReviews, name: 'reviews.index'}
     ], name: 'books.show'}
 ];

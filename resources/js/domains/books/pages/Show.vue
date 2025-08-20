@@ -2,9 +2,13 @@
     import { bookStore } from '../store';
     import { useRoute } from 'vue-router';
     import BookReviews from '../../reviews/components/BookReviews.vue';
-    import { authorStore } from '../../authors/store';
+    // import { authorStore } from '../../authors/store';
+
 
     const route = useRoute();
+
+    bookStore.actions.getAll();
+    
     const book = bookStore.getters.getById(route.params.id);
     console.log(book.value);
     // const author = authorStore.getters.getById(book.value.author_id);

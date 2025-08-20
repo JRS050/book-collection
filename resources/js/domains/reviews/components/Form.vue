@@ -1,11 +1,10 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    import { reviewStore } from '../store';
     import  errorMessage from '../../../services/error/errorMessage.vue';
     import FormError from '../../../services/error/FormError.vue';
 
 
-    reviewStore.actions.getAll();
+    
 
     const props = defineProps({ review: Object });
 
@@ -25,5 +24,7 @@
         <FormError name="content" />
 
         <textarea v-model="form.content" ></textarea>
+
+        <button type="submit">Post review</button>
     </form>
 </template>
